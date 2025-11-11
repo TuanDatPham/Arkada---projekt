@@ -183,7 +183,7 @@ void Logic() {
     }
 }
 
-int main() {
+void snake() {
     srand(time(0));
     Setup();
     while (!gameOver) {
@@ -192,5 +192,4 @@ int main() {
         Logic();
         usleep(50000); // Změna z Sleep(50) na usleep(50000) pro Linux
     }
-    return 0;
 }

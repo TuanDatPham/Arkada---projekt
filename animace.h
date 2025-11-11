@@ -17,10 +17,12 @@ void drawSmall();
 void drawMedium();
 
 // ───────────────────────────────────────────────────────────
-// FAZE 3 — VELKÁ BUDOVA (detailní zoom)
+// FAZE 3 — VELKÁ BUDOVA ("detailní" zoom)
 // ───────────────────────────────────────────────────────────
 void drawBig();
 
 void drawAutomat();
+
+void vyber_hry();
 
 void CelaAnimace();
