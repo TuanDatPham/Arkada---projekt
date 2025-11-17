@@ -202,8 +202,8 @@ void vyber_hry(){
 
 void CelaAnimace(){
     drawSmall();
-    //drawMedium();
-    //drawBig();
-    //drawAutomat();
-    //vyber_hry();
+    drawMedium();
+    drawBig();
+    drawAutomat();
+    vyber_hry();
 }
