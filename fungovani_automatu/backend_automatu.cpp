@@ -1,9 +1,8 @@
-#include "../backend_automatu.h"
 #include "../jednotlive_hry/hadej_cislo.h"
 #include "../jednotlive_hry/magic8.h"
 #include "../jednotlive_hry/snake.h"
 #include "../jednotlive_hry/sortinghat.h"
-//#include "tic-tac-toe.cpp"
+#include "../jednotlive_hry/tic_tac_toe.cpp"
 
 #pragma once
 
@@ -14,18 +13,21 @@ int backend_automatu(){
     switch (vyberHry)
     {
     case 1:
-        hadej_cislo();
+        return hadej_cislo();
         break;
     case 2:
-        magic8();
+        return magic8();
         break;
     case 3:
-        sorting_hat();
+        return sorting_hat();
         break;
     case 4:
         snake();
+        break;
+    case 5:
+        return tic_tac_toe();
     default:
         break;
     }
-    return 0;
+    return 1;
 }

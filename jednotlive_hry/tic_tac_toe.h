@@ -1,11 +1,9 @@
 #include <iostream>
-#include <chrono>
-#include <thread>
 #include <cstdlib>
+#include <ctime>
 
 using namespace std;
 #pragma once
 
-void Zapnuti_Hry(){
-
-}
+int tahPocitace();
+int tic_tac_toe();

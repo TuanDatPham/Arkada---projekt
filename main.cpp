@@ -10,7 +10,7 @@
 #include "jednotlive_hry/magic8.cpp"
 #include "jednotlive_hry/snake.cpp"
 #include "jednotlive_hry/sortinghat.cpp"
-//#include "tic-tac-toe.cpp"
+#include "jednotlive_hry/tic_tac_toe.cpp"
 
 using namespace std;
 

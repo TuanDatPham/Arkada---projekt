@@ -185,9 +185,9 @@ void vyber_hry(){
     cout << "  =@                                      @=:" << endl;
     cout << "  -@   1. Hádej číslo                     @-." << endl;
     cout << "  #@   2. Magic 8-ball                    @-:" << endl;
-    cout << "  -@   3. Sanke                           @=." << endl;
-    cout << "  :@   4. Tic-Tac-Toe                     @-:" << endl;
-    cout << "  -@                                      @=." << endl;
+    cout << "  -@   3. Sorting Hat                     @=." << endl;
+    cout << "  :@   4. Snake                           @-:" << endl;
+    cout << "  -@   5. Tic Tac Toe                     @=." << endl;
     cout << "  +@                                      @-:" << endl;
     cout << "  =@                                      @=." << endl;
     cout << "  =@                                      @-:" << endl;

@@ -1,10 +1,12 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+
+#include "tic_tac_toe.h"
 using namespace std;
 
 
-int lines[8][3][2] = {
+static const int lines[8][3][2] = { //array vyhernich kombinaci, ten se nema implementovat v .h
     {{0,0}, {0,1}, {0,2}},
     {{1,0}, {1,1}, {1,2}},
     {{2,0}, {2,1}, {2,2}},
@@ -15,7 +17,7 @@ int lines[8][3][2] = {
     {{0,2}, {1,1}, {2,0}}
 };
 
-void tahPocitace(char board[3][3], int &r, int &c, char hracX, char hracO) {
+int tahPocitace(char board[3][3], int &r, int &c, char hracX, char hracO) {
 
     for (int i = 0; i < 8; i++) {
         int xr = -1, xc = -1;
@@ -32,7 +34,7 @@ void tahPocitace(char board[3][3], int &r, int &c, char hracX, char hracO) {
 
         if (countO == 2 && xr != -1) {
             r = xr; c = xc;
-            return;
+            return 0;
         }
     }
 
@@ -51,7 +53,7 @@ void tahPocitace(char board[3][3], int &r, int &c, char hracX, char hracO) {
 
         if (countX == 2 && xr != -1) {
             r = xr; c = xc;
-            return;
+            return 0;
         }
     }
 
@@ -59,9 +61,10 @@ void tahPocitace(char board[3][3], int &r, int &c, char hracX, char hracO) {
         r = rand() % 3;
         c = rand() % 3;
     } while (board[r][c] != ' ');
+    return 0;
 }
 
-int main() {
+int tic_tac_toe() {
     srand((unsigned)time(0));
 
     char board[3][3] = {
