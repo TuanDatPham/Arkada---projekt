@@ -1,53 +1,64 @@
 #include <iostream>
 #include <vector>
-#include<string>
-
+#include <string>
+#include "sherlock.h"
+#include "../fungovani_automatu/backend_automatu.cpp"
 using namespace std;
 
-class Lokace {
-    public:
-    string nazev;
-    string popis;
-    vector<string>sousede;
-    string dukaz;
-    string postava;
-    string rozhovor;
-
-    Lokace(string n, string p, vector<string> s, string d = "", string osoba = "", string r = "")
-        : nazev(n), popis(p), sousede(s), dukaz(d), postava(osoba), rozhovor(r) {}
-
-    void zobraz_popis() {
-        cout << "\n== " << nazev << " ==\n" << popis << "\n" << endl;
+int konec_hry(){
+    int rozhodnuti;
+    std::cout << "Hra je u konce" << endl << "1 -> Hrát znovu\n2-> Chci hrát něco jiného\n 3-> Ukončit a vypnout automat";
+    std::cin >> rozhodnuti;
+    switch (rozhodnuti)
+    {
+    case 1:
+        sherlock();
+        break;
+    case 2:
+        vyber_hry1();
+        break;
+    case 3:
+        vypnuti();
+    default:
+        break;
     }
+}
 
-    void zobraz_menu() {
-        cout << "Co chces delat?"<< endl;
-        cout << "1. Prozkoumat" << endl;
-        if (postava != "") cout << "2. Mluvit s " << postava << endl;
-        cout << "3. Jit jinam" << endl;
-        cout << "4. Konec hry" << endl;
-    }
+Lokace::Lokace(string n, string p, vector<string> s, string d, string osoba, string r)
+    : nazev(n), popis(p), sousede(s), dukaz(d), postava(osoba), rozhovor(r) {}
 
-    void prozkoumat() {
-        if (dukaz != "")
-            cout << "Prozkoumavas okoli... " << dukaz << endl;
-        else
-            cout << "Nevidis nic zvlatniho." << endl;
-    }
+void Lokace::zobraz_popis() {
+    cout << "\n== " << nazev << " ==\n" << popis << "\n" << endl;
+}
 
-    void mluvit() {
-        if (postava != "")
-            cout << postava << ": \"" << rozhovor << "\"" << endl;
-        else
-            cout << "Nikdo tu neni." << endl;
+void Lokace::zobraz_menu() {
+    cout << "Co chces delat?" << endl;
+    cout << "1. Prozkoumat" << endl;
+    if (postava != "") cout << "2. Mluvit s " << postava << endl;
+    cout << "3. Jit jinam" << endl;
+    cout << "4. Konec hry" << endl;
+}
+
+void Lokace::prozkoumat() {
+    if (dukaz != "")
+        cout << "Prozkoumavas okoli... " << dukaz << endl;
+    else
+        cout << "Nevidis nic zvlatniho." << endl;
+}
+
+void Lokace::mluvit() {
+    if (postava != "")
+        cout << postava << ": \"" << rozhovor << "\"" << endl;
+    else
+        cout << "Nikdo tu neni." << endl;
+}
+
+void Lokace::zobraz_sousedy() {
+    cout << "\nKam chces jit dal?" << endl;
+    for (int i = 0; i < sousede.size(); i++) {
+        cout << i + 1 << ". " << sousede[i] << endl;
     }
-    void zobraz_sousedy() {
-        cout << "\nKam chces jit dal?" << endl;
-        for (int i = 0; i < sousede.size(); i++) {
-            cout << i + 1 << ". " << sousede[i] << endl;
-        }
-    }
-};
+}
 
 void namesti() {
     cout << R"(
@@ -246,7 +257,32 @@ Rano uz bylo pozde."
     }
 }
 
-int main() {
+void zpracujDukaz(string d) {
+    if (d == "D1") {
+        D1_latka();
+        naselLatku = true;
+    }
+    else if (d == "D3") {
+        D3_spis();
+        cetlDopisy = true;
+        krypta_odemcena = true;   // 
+        cout << "\nMezi dopisy jsi nasel i stary klic od podzemnich prostor kostela." << endl;
+    }
+    else if (d == "D4") {
+        D4_denik();
+        naselDenik = true;
+    }
+    else if (d == "D5") {
+        D5_zapas();
+        viOZapase = true;
+    }
+    else if (d == "D6") {
+        D6_telo();
+        naselTelo = true;
+    }
+}
+
+int sherlock() {
     string aktualni_misto = "Namesti";
 
     // Vytvoření všech lokací
@@ -384,34 +420,11 @@ A nekdo vi proc.
                 case 4: {
                     hra_bezi = false;
                     cout << "\nHra skoncila. Dekujeme, ze jsi hral(a)!" << endl;
+                    konec_hry();
                     return 0;
                 }
             }
         }
     }
-}
-
-void zpracujDukaz(string d) {
-    if (d == "D1") {
-        D1_latka();
-        naselLatku = true;
-    }
-    else if (d == "D3") {
-        D3_spis();
-        cetlDopisy = true;
-        krypta_odemcena = true;   // 
-        cout << "\nMezi dopisy jsi nasel i stary klic od podzemnich prostor kostela." << endl;
-    }
-    else if (d == "D4") {
-        D4_denik();
-        naselDenik = true;
-    }
-    else if (d == "D5") {
-        D5_zapas();
-        viOZapase = true;
-    }
-    else if (d == "D6") {
-        D6_telo();
-        naselTelo = true;
-    }
+    return 0;
 }

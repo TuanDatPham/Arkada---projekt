@@ -4,11 +4,29 @@
 #include <iostream>
 #include <cstdlib>
 #include <string>
-
+#include "../fungovani_automatu/backend_automatu.cpp"
 #include "knp.h"
 
 using namespace std;
 
+int konec_hry(){
+    int rozhodnuti;
+    std::cout << "Hra je u konce" << endl << "1 -> Hrát znovu\n2-> Chci hrát něco jiného\n 3-> Ukončit a vypnout automat";
+    std::cin >> rozhodnuti;
+    switch (rozhodnuti)
+    {
+    case 1:
+        knp();
+        break;
+    case 2:
+        vyber_hry1();
+        break;
+    case 3:
+        vypnuti();
+    default:
+        break;
+    }
+}
 
 void clearScreen() {
 	std::cout << "\033[2J\033[1;1H";
@@ -57,6 +75,7 @@ void Proti_hraci() {
 			if (user2 == 1) {
 				cout << "Remiza!" << endl << endl;
 			}
+			konec_hry();
 		}
 		if (user1 == 2) {
 			if (user2 == 3) {
@@ -68,6 +87,7 @@ void Proti_hraci() {
 			if (user2 == 2) {
 				cout << "Remiza!" << endl << endl;
 			}
+			konec_hry();
 		}
 		if (user1 == 3) {
 			if (user2 == 2) {
@@ -79,6 +99,7 @@ void Proti_hraci() {
 			if (user2 == 3) {
 				cout << "Remiza!" << endl << endl;
 			}
+			konec_hry();
 		}
 
 	
@@ -122,6 +143,7 @@ void Proti_pocitaci() {
 				cout << "Volba pocitace: Kamen" << endl;
 				cout << "Remiza!"<<endl << endl;
 			}
+			konec_hry();
 		}
 		if (volba == 2) {
 			if (random == 3) {
@@ -136,6 +158,7 @@ void Proti_pocitaci() {
 				cout << "Volba pocitace: Nuzky" << endl;
 				cout << "Remiza!"<<endl << endl;
 			}
+			konec_hry();
 		}
 		if (volba == 3) {
 			if (random == 2) {
@@ -150,6 +173,7 @@ void Proti_pocitaci() {
 				cout << "Volba pocitace: Papir" << endl;
 				cout << "Remiza!" << endl << endl;
 			}
+			konec_hry();
 		}
 
 	} while (volba == random);

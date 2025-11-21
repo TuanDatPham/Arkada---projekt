@@ -10,7 +10,27 @@
 #include <cctype>
 
 #include "sibenice.h"
+#include "../fungovani_automatu/backend_automatu.h"
+#include "../fungovani_automatu/animace.h"
 // Upravit seznam slov zde (pro ty, co budou hrát) nebo pridat soubor "words.txt" vedle programu (kazdy radek = jedno slovo)
+int konec_hry(){
+    int rozhodnuti;
+    std::cout << "Hra je u konce" << std::endl << "1 -> Hrát znovu\n2-> Chci hrát něco jiného\n 3-> Ukončit a vypnout automat";
+    std::cin >> rozhodnuti;
+    switch (rozhodnuti)
+    {
+    case 1:
+        /* code */
+        break;
+    case 2:
+        vyber_hry1();
+        break;
+    case 3:
+        vypnuti();
+    default:
+        break;
+    }
+};
 static std::vector<std::string> BUILT_IN_WORDS = {
     "jablko", "programovani", "python", "informatika", "skola", "stromecek", "auto", "knihovna"
 };

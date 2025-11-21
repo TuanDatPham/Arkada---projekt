@@ -1,6 +1,24 @@
 #include <iostream>
 #include "sortinghat.h"
-
+#include "../fungovani_automatu/backend_automatu.cpp"
+int konec_hry(){
+    int rozhodnuti;
+    std::cout << "Hra je u konce" << endl << "1 -> Hrát znovu\n2-> Chci hrát něco jiného\n 3-> Ukončit a vypnout automat";
+    std::cin >> rozhodnuti;
+    switch (rozhodnuti)
+    {
+    case 1:
+        sorting_hat();
+        break;
+    case 2:
+        vyber_hry1();
+        break;
+    case 3:
+        vypnuti();
+    default:
+        break;
+    }
+}
 int sorting_hat() {
 
   // The magic starts here
@@ -117,7 +135,7 @@ if (slytherin > max) {
   house = "Zmijozel";
   
 }
-
+konec_hry();
 std::cout << house << "!\n";
 
 return 0;

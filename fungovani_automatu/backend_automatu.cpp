@@ -5,11 +5,11 @@
 #include "../jednotlive_hry/knp.h"
 #include "../jednotlive_hry/tic_tac_toe.h"
 #include "../jednotlive_hry/sibenice.h"
+#include "../jednotlive_hry/sherlock.h"
 #include "animace.cpp"
 
 int vyber_hry1(){
     int vyberHry;
-    std::cin >> vyberHry;
     std::cin >> vyberHry;
 
     switch (vyberHry)
@@ -35,6 +35,12 @@ int vyber_hry1(){
     case 7:
         sibenice();
         break;
+    case 8:
+        sherlock();
+        break;
+    //case 9:
+      //  bomba();
+        //break;
     default:
         break;
     }

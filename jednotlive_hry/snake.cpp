@@ -9,7 +9,28 @@
 #include <thread>
 #include <errno.h>
 
+#include "../fungovani_automatu/backend_automatu.h"
+#include "../fungovani_automatu/animace.h"
+
 // Terminal raw mode management (set once)
+int konec_hry(){
+    int rozhodnuti;
+    std::cout << "Hra je u konce" << std::endl << "1 -> Hrát znovu\n2-> Chci hrát něco jiného\n 3-> Ukončit a vypnout automat";
+    std::cin >> rozhodnuti;
+    switch (rozhodnuti)
+    {
+    case 1:
+        /* code */
+        break;
+    case 2:
+        vyber_hry1();
+        break;
+    case 3:
+        vypnuti();
+    default:
+        break;
+    }
+}
 static struct termios orig_termios;
 static int orig_flags = -1;
 void disableRawMode() {
@@ -173,5 +194,6 @@ int main() {
 
     disableRawMode();
     std::cout << "Konec hry. Skóre: " << score << std::endl;
+    konec_hry();
     return 0;
 }
