@@ -22,6 +22,8 @@ void drawBig();
 
 void drawAutomat();
 
-void vyber_hry();
+void vyber_hry_animace();
+
+void vypnuti();
 
 void CelaAnimace();

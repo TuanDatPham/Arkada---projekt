@@ -1,16 +1,8 @@
 // ───────────────
 // co dela automat
 // ───────────────
-#include "fungovani_automatu/animace.cpp"
-#include "fungovani_automatu/backend_automatu.cpp"
-// ──────────────
-// jednotlive hry
-// ────────────── 
-#include "jednotlive_hry/hadej_cislo.cpp"
-#include "jednotlive_hry/magic8.cpp"
-#include "jednotlive_hry/snake.cpp"
-#include "jednotlive_hry/sortinghat.cpp"
-#include "jednotlive_hry/tic_tac_toe.cpp"
+#include "fungovani_automatu/animace.h"
+#include "fungovani_automatu/backend_automatu.h"
 
 using namespace std;
 
